@@ -1,5 +1,8 @@
 <?php
 require('../inc/modele.php');
+if( !isConnected() )
+	header('location:'.RACINE_SITE);
+
 
 $query = execRequete("SELECT * FROM commande c, vehicule v, agences a 
 					  WHERE c.id_vehicule = v.id_vehicule 
@@ -26,11 +29,12 @@ require('../inc/header.php');
 					<th>Début</th>
 					<th>Fin</th>
 					<th>Prix</th>
+					<th>Jours</th>
 					<th>Statut</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
-			<?php foreach( $historique_loca as $cle => $valeur ): ?>
+			<?php foreach( $historique_loca as $cle => $valeur ): ?><?php $nbj = nbjour( $valeur['date_heure_depart'], $valeur['date_heure_fin'] ) ?>
 				<tr>
 					<td> <?= $valeur['id_commande']; ?> </td>
 					<td> <?= $valeur['marque']; ?> </td>
@@ -38,6 +42,7 @@ require('../inc/header.php');
 					<td> <?= $valeur['date_heure_depart']; ?> </td>
 					<td> <?= $valeur['date_heure_fin']; ?> </td>
 					<td> <?= $valeur['prix_total']; ?> </td>
+					<td> <?= $nbj; ?> </td>
 					<td> <?= encours( $valeur['date_heure_fin'] ); ?> </td>
 					<td> <a href="">louer à nouveau</a>  </td>
 				</tr>

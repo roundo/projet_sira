@@ -31,7 +31,7 @@
         <a href="<?= RACINE_SITE.'admin/gestion_agence.php'?>" class="btn btn-success">Agence</a>
         <a href="<?= RACINE_SITE.'admin/gestion_vehicule.php'?>" class="btn btn-success">Véhicule</a>
         <a href="<?= RACINE_SITE.'admin/gestion_membre.php'?>" class="btn btn-success">Membre</a>
-        <a href="<?= RACINE_SITE.'membre/compte.php'?>" class="btn btn-success">Commandee</a>
+        <a href="<?= RACINE_SITE.'admin/commande.php'?>" class="btn btn-success">Commandee</a>
       <?php endif; ?>
       <a href="<?= RACINE_SITE .'connexion.php?action=deconnexion' ?>" class="btn btn-danger">
         Déconnexion
@@ -131,15 +131,24 @@
     
   </header>
 	<main>
-    <?php if(isset($_SESSION['erreur'])){ 
-            echo "<h3 class='erreurLog'>".$_SESSION['erreur']."</h3>"; 
-            unset($_SESSION['erreur']); 
-          }if( isset($_SESSION['inscription']) ){
-            echo $_SESSION['inscription'];
-            unset( $_SESSION['inscription'] );
-          }if( isset($_SESSION['err']) ){
-            echo "<h3 class='erreurLog'>".$_SESSION['err']."</h3>";
-            unset($_SESSION['err']);
-          }
+    <?php 
+      if(isset($_SESSION['erreur'])){ 
+        echo "<h3 class='erreurLog'>".$_SESSION['erreur']."</h3>";
+        unset($_SESSION['erreur']); 
+      }if( isset($_SESSION['inscription']) ){
+        echo $_SESSION['inscription'];
+        unset( $_SESSION['inscription'] );
+      }if( isset($_SESSION['err']) ){
+        echo "<h3 class='erreurLog'>".$_SESSION['err']."</h3>";
+        unset($_SESSION['err']);
 
-    ?>
+      }
+      ?>
+      <?php if( isset($_SESSION['reserv']) ): ?>
+        <?= $_SESSION['reserv']; ?>
+        <script type="text/javascript">
+          alert("Veuillez vous connecter !");
+        </script>
+        <?php unset( $_SESSION['reserv'] ); ?>
+            
+      <?php endif; ?>

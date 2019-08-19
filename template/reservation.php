@@ -1,5 +1,11 @@
 <?php 
 require('../inc/modele.php');
+if( !isConnected() ){
+	$_SESSION['reserv'] = '<h2 class="text-center pt-5">Connectez vous!!</h2>';
+	header('location:'.RACINE_SITE);
+	exit();
+}
+
 $query = execRequete("SELECT v.*, a.id_agence from vehicule v, agences a 
 					  WHERE id_vehicule = :idv 
 					  AND v.id_agence = a.id_agence", 
@@ -24,14 +30,14 @@ if( !empty($_POST['date_debut']) && $_POST['date_fin'] > $_POST['date_debut'] ){
 						 		'pttc' => $prix_total
 						 ));
 	header('location:'.RACINE_SITE.'membre/compte.php');
-}else
-	echo "no";
+}
 
 
 require('../inc/header.php');
-?>
 
-<div class="container">
+if( isConnected() ):
+?>
+	<div class="container">
 	<div class="row">
 		<div class="col-2 mt-5"><?= $reservation['marque'].' - '.$reservation['modele']; ?>
 		<br>
@@ -65,5 +71,6 @@ require('../inc/header.php');
 	</form>
 </div>
 
-<?php
+
+<?php endif;
 require('../inc/footer.php');
