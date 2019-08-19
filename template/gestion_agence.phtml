@@ -1,0 +1,94 @@
+<div class="container">
+	<h3 class="titre">Gestion des Agences</h3>
+ 	<table class="table table-bordered table-striped">
+ 		<tr>
+ 			<th>Agence</th>
+ 			<th>Titre</th>
+ 			<th>Adresse</th>
+ 			<th>Ville</th>
+ 			<th>CP</th>
+ 			<th>Description</th>
+ 			<th>Photo</th>
+ 			<th>Actions</th>
+ 		</tr>
+ 		<?php foreach ($agence as $key => $valeur): ?>
+ 			<tr>
+ 				<td><?= $valeur['id_agence']; ?></td>
+ 				<td><?= $valeur['titre']; ?></td>
+ 				<td><?= $valeur['adresse']; ?></td>
+ 				<td><?= $valeur['ville']; ?></td>
+ 				<td><?= $valeur['cp']; ?></td>
+ 				<td><?= $valeur['description']; ?></td>
+ 				<td>
+ 					<img class="img_tab" src="<?= RACINE_SITE.'/utilities/img/'. $valeur['photo']; ?>">
+ 				</td>
+ 				<td>
+				<a href="?action=modification&id=<?= $valeur['id_agence'] ?>#md"><i class="fas fa-pen"></i>
+				</a> 
+				- 
+				<a href="?action=suppression&id=<?= $valeur['id_agence'] ?>"><i class="fas fa-trash-alt"></i>
+				</a> 
+			</td>
+ 			</tr>
+ 		<?php endforeach; ?>
+ 	</table>
+ 	<hr>
+ 	<!-- Fomulaire gestion agence -->
+ 	<h4 class="titre">Ajout/Modif d'une agence</h4>
+ 	<form class="formulaire" method="post" action="" enctype="multipart/form-data" id="md">
+ 		<input type="hidden" name="id_agence" value="<?= $agence_actuel['id_agence'] ?? 0 ?>">
+ 		<div class="row">
+ 			<div class="form-group col-6">
+ 				<label>Titre</label>
+ 				<div class="input-group">
+ 					<input type="text" name="titre" placeholder="Titre de l'agence" class="form-control" value="<?= $agence_actuel['titre'] ?? '' ?>">
+ 				</div>
+ 			</div>
+ 			<div class="form-group col-6">
+ 				<label>Adresse</label>
+ 				<div class="input-group">
+ 					<input type="text" name="adresse" placeholder="Adresse de l'agence" class="form-control" value="<?= $agence_actuel['adresse'] ?? '' ?>">
+ 				</div>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="form-group col-6">
+ 				<label>Description</label>
+ 				<div class="input-group">
+ 					<textarea name="desc" placeholder="Description de l'agence" class="form-control"><?= $agence_actuel['description'] ?? '' ?></textarea>
+ 				</div>
+ 			</div>
+ 			<div class="form-group col-6">
+ 				<label>Ville</label>
+ 				<div class="input-group">
+ 					<input type="text" name="ville" placeholder="Ville" class="form-control" value="<?= $agence_actuel['ville'] ?? '' ?>">
+ 				</div>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="form-group col-6">
+ 				<label>Photo</label>
+ 				<div class="input-group">
+ 					<input type="file" name="photo" placeholder="Titre de l'agence" class="form-control" value="<?= $agence_actuel['photo'] ?? '' ?>">
+ 				</div>
+ 				<?php if( !empty($agence_actuel['photo']) ) :?>
+ 					<img class="img_tab" src="<?= RACINE_SITE . 'utilities/img/'.$agence_actuel['photo'] ?>">
+ 					<input type="hidden" name="photo_actuelle" value="<?= $agence_actuel['photo']; ?>">
+ 				<?php endif; ?>
+ 			</div>
+ 			<div class="form-group col-6">
+ 				<label>Code postal</label>
+ 				<div class="input-group">
+ 					<input type="text" name="cp" placeholder="Code postal" class="form-control" value="<?= $agence_actuel['cp'] ?? '' ?>">
+ 				</div>
+
+ 			</div>
+ 		</div>
+ 		<div class="form-group col-6">
+    	<div><label><br></label></div>
+    	<input type="submit" name="inscription" value="Enregistrer" class="btn btn-primary">
+    	<input type="reset" class="btn btn-secondary">
+    </div>
+
+ 	</form>
+</div>

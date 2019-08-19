@@ -1,0 +1,43 @@
+
+
+header{
+	background:url('../img/background1.jpg');
+	background-repeat: no-repeat;
+	padding-bottom: 15%;
+    background-position-y: -95px;
+    background-size:cover;
+}
+header a, header button{
+	position: relative;
+    top: 100px;
+}
+
+main{margin-top: -38px;}
+
+.titre{background-color: rgba(0, 0, 0, .3); padding: .3%;}
+
+.accueil_vehicule{text-align: center;}
+.accueil_vehicule img{width: 20%;}
+.bonjour{color: red; text-transform: uppercase;}
+.bonjour strong{background-color: black;} 
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  background-color: grey !important;
+}
+
+footer{
+	padding: 3%;
+	margin-top: 5%;
+}
+
+.erreurLog{color: red; text-align: center;
+    margin-top: -40px;
+}
+
+.inscription{color: blue; text-align: center;}
+
+.img_tab{
+	width: 40%;
+}
