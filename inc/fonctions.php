@@ -64,11 +64,10 @@ function encours( $df ){
 
 function enLocation( $id_vehicule_loue ){
 	$date = date('Y-m-d');
-	$location = execRequete("SELECT DISTINCT $id_vehicule_loue 
-													 FROM commande 
-													 WHERE id_vehicule = :id 
-													 AND date_heure_fin > :dt", 
-													 array("id" => $id_vehicule_loue, 
+$location = execRequete("SELECT DISTINCT $id_vehicule_loue 			FROM commande 
+									 WHERE id_vehicule = :id 
+									 AND date_heure_fin > :dt", 
+									 array("id" => $id_vehicule_loue, 
 													 			"dt" => $date));
 													 			
   if( $location->rowCount() != 0 )
