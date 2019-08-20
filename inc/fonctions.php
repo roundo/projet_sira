@@ -74,3 +74,6 @@ $location = execRequete("SELECT DISTINCT $id_vehicule_loue 			FROM commande
   	return true;
   return false;	
 }
+function tt(){
+	
+}
