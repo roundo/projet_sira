@@ -3,27 +3,25 @@ require('../inc/modele.php');
 if( !isConnected() )
 	header('location:'.RACINE_SITE);
 
-
-$query = execRequete("SELECT * FROM commande c, vehicule v, agences a 
+$numLoc = 1;
+$query = execRequete("SELECT * FROM commande c, vehicule v, agences a, membre m 
 					  WHERE c.id_vehicule = v.id_vehicule 
-					  AND c.id_agence = a.id_agence 
-					  AND c.id_membre = :id_membre", 
-					  array("id_membre" => $_SESSION['membre']['id_membre']) );
+					  AND c.id_agence = a.id_agence
+					  AND m.id_membre = c.id_membre"
+					  );
 
 $historique_loca = $query->fetchAll();
 require('../inc/header.php');
 ?>
-
 <div class="container">
 	<h2 class="text-center">
-		Espace membre de <?= $_SESSION['membre']['prenom']; ?>
+		Liste de locations clients
 	</h2>
 	<?php if( $historique_loca ): ?>
-		<h3 class="titre">Ici, historique de vos locations !!</h3>
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>Location</th>
+					<th>Loc Num</th>
 					<th>Véhicule</th>
 					<th>Agence</th>
 					<th>Début</th>
@@ -31,20 +29,23 @@ require('../inc/header.php');
 					<th>Prix</th>
 					<th>Jours</th>
 					<th>Statut</th>
-					<th>Actions</th>
+					<th>Client</th>
 				</tr>
 			</thead>
-			<?php foreach( $historique_loca as $cle => $valeur ): ?><?php $nbj = nbjour( $valeur['date_heure_depart'], $valeur['date_heure_fin'] ) ?>
+			<?php foreach( $historique_loca as $cle => $valeur ): ?>
+				<?php $nbj = nbjour( $valeur['date_heure_depart'], $valeur['date_heure_fin'] ); 
+					 
+				?>
 				<tr>
-					<td> <?= $valeur['id_commande']; ?> </td>
+					<td> <?= $numLoc++; ?> </td>
 					<td> <?= $valeur['marque']; ?> </td>
-					<td> <?= $valeur['titre']; ?> </td>
+					<td> <?= $valeur['ville']; ?> </td>
 					<td> <?= $valeur['date_heure_depart']; ?> </td>
 					<td> <?= $valeur['date_heure_fin']; ?> </td>
 					<td> <?= $valeur['prix_total']; ?> </td>
 					<td> <?= $nbj; ?> </td>
 					<td> <?= encours( $valeur['date_heure_fin'] ); ?> </td>
-					<td> <a href="">louer à nouveau</a>  </td>
+					<td> <a href="<?= RACINE_SITE.'admin/gestion_membre.php' ?>"><?= $valeur['prenom'] ?></a>  </td>
 				</tr>
 			<?php endforeach; ?>
 
@@ -55,6 +56,5 @@ require('../inc/header.php');
 	
 </div>
 
-
-<?php
+<?phpw
 require('../inc/footer.php');
