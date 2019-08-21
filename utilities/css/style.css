@@ -7,7 +7,7 @@ header{
     background-position-y: -95px;
     background-size:cover;
 }
-header a, header button{
+nav{
 	position: relative;
     top: 100px;
 }

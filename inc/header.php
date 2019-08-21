@@ -21,7 +21,8 @@
     </h1>
     <h2 class="text-light text-center">Location de véhicule 24h/24 7j/7</h2>
 
-    <?php if( isConnected() ): ?>
+    <nav>
+      <?php if( isConnected() ): ?>
       <div class="text-light text-right">
         <strong>Bonjour <?= $_SESSION['membre']['prenom']; ?></strong>
       </div>
@@ -39,12 +40,13 @@
       <?php else: ?>
 
         <button class="btn btn-success" data-toggle="modal" data-target="#inscription">
-        	Inscription
+          Inscription
         </button>
         <button class="btn btn-success" data-toggle="modal" data-target="#connexion">
-        	Connexion
+          Connexion
         </button>
       <?php endif; ?>
+    </nav>
 
     <!-- Modal inscription -->
     <div class="modal fade" id="inscription" tabindex="-1">

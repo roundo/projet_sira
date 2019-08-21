@@ -1,13 +1,14 @@
 <?php
 
 	require_once('modele.php');
-  $date = date('Y-m-d');
-	$vehicules = execRequete("SELECT v.*, a.titre as titreagence  
+ 
+	$vehicules = execRequete("SELECT v.*, a.titre as titreagence
                             FROM vehicule v
                             INNER JOIN agences a
                             ON v.id_agence = a.id_agence
-                            ORDER BY v.titre");
+                            ORDER BY v.titre DESC");
 
+              //INNER JOIN commande c  ON c.id_vehicule = c.id_vehicule  GROUP BY v.id_vehicule
 
 
     if ( $vehicules->rowCount() > 0 ) : ?>

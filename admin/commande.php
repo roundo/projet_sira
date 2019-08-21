@@ -51,10 +51,10 @@ require('../inc/header.php');
 
 		</table>
 	<?php else: ?>
-		<h3 class="titre text-center">Vous n'avez pas encore fait une location chez nous !!</h3>
+		<h3 class="titre text-center">Aucune commande enregistrée !!</h3>
 	<?php endif; ?>
 	
 </div>
 
-<?phpw
+<?php
 require('../inc/footer.php');
