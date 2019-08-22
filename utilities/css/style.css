@@ -7,12 +7,13 @@ header{
     background-position-y: -95px;
     background-size:cover;
 }
-nav{
+/*nav{
 	position: relative;
     top: 100px;
-}
+    margin-bottom: 2px;
+}*/
 
-main{margin-top: -38px;}
+main{margin-top: 5px;}
 
 .titre{background-color: rgba(0, 0, 0, .3); padding: .3%;}
 
@@ -26,6 +27,9 @@ a.disabled {
   cursor: default;
   background-color: grey !important;
 }
+
+#prixx{background-color: rgba(15, 100, 50, .4);
+padding: 5px 32px;}
 
 footer{
 	padding: 3%;

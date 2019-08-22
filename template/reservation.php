@@ -49,28 +49,36 @@ if( isConnected() ):
 		<input type="hidden" name="id_membre" value="<?= $_SESSION['membre']['id_membre']; ?>">
 		<input type="hidden" name="id_vehicule" value="<?= $reservation['id_vehicule']; ?>">
 		<input type="hidden" name="id_agence" value="<?= $reservation['id_agence']; ?>">
-		<input type="hidden" name="pttc" value="<?= $reservation['prix_journalier']; ?>">
+		<input type="hidden" id="pttc" name="pttc" value="<?= $reservation['prix_journalier']; ?>">
 
 		<div class="row">
 			<div class="form-group col-3">
 				<label>Date de début</label>
 				<div class="input-group">
-					<input type="date" name="date_debut" class="form-control">
+					<input type="date" name="date_debut" id="dd" class="form-control">
 				</div>
 			</div>
 			<div class="form-group col-3">
 				<label>Date de fin</label>
 				<div class="input-group">
-					<input type="date" name="date_fin" class="form-control">
+					<input type="date" name="date_fin" id="df" class="form-control">
 				</div>
 			</div>
 			<!--  -->
 		</div>
-		<input type="submit" name="inscription" value="Réserver" class="btn btn-primary">
-    	<input type="reset" class="btn btn-secondary">
+		<div class="row">
+			<div class="col-3">
+				<input type="submit" name="inscription" value="Réserver" class="btn btn-primary">
+    			<input type="reset" class="btn btn-secondary">
+			</div>
+			<div class="col-3 text-center">
+				<strong id="prix"></strong>
+			</div>
+		</div>
 	</form>
 </div>
 
+<script type="text/javascript" src="<?= RACINE_SITE.'utilities/js/prix.js' ?>"></script>
 
 <?php endif;
 require('../inc/footer.php');
