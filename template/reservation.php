@@ -13,8 +13,6 @@ $query = execRequete("SELECT v.*, a.id_agence from vehicule v, agences a
 
 $reservation = $query->fetch();
 
-$dateMin = date("Y-m-d");
-
 /* Cas réservation */
 if( !empty($_POST['date_debut']) && $_POST['date_fin'] > $_POST['date_debut'] ){
 	extract($_POST);
@@ -57,64 +55,33 @@ if( isConnected() ):
 			<div class="form-group col-3">
 				<label>Date de début</label>
 				<div class="input-group">
-					<input type="text" name="date_debut" min="<?= $dateMin; ?>" id="dd" class="form-control">
+					<input type="date" name="date_debut" min="<?= date("Y-m-d"); ?>" id="date_debut" class="form-control">
 				</div>
 			</div>
 			<div class="form-group col-3">
 				<label>Date de fin</label>
 				<div class="input-group">
-					<input type="date" name="date_fin" min="" id="df" class="form-control" value="date">
+					<input type="date" name="date_fin" min="" id="date_fin" class="form-control" >
 				</div>
 			</div>
 			<!--  -->
 		</div>
 		<div class="row">
+			<div class="col-6 text-center">
+				<strong id="prix"></strong>
+			</div>
+		</div>
+		<p></p>
+		<div class="row">
 			<div class="col-3">
 				<input type="submit" name="inscription" value="Réserver" class="btn btn-primary">
     			<input type="reset" class="btn btn-secondary">
-			</div>
-			<div class="col-3 text-center">
-				<strong id="prix"></strong>
 			</div>
 		</div>
 	</form>
 </div>
 
-<form action="***.php" method="post">  
-        [...]  
-  <p><input type="text" id="datedebut" name="datedebut" /></p>  
-        [...]  
-  <p><input type="submit" /></p>  
-</form>
-
 <script type="text/javascript" src="<?= RACINE_SITE.'utilities/js/prix.js' ?>"></script>
-
-<script type="application/javascript"> 
-$(document).ready(function() { 
-  $( "#datedebut" ).datepicker({ 
-    defaultDate: "+1w", 
-    numberOfMonths: 2, 
-    changeMonth: true, 
-    changeYear: true, 
-    yearRange: '-1:+1', 
-    maxDate: '+1Y', 
-    onClose: function( selectedDate ) { 
-    $( "#date_fin" ).datepicker( "option", "minDate", selectedDate ); 
-    } 
-  }); 
-  $( "#date_fin" ).datepicker({ 
-    defaultDate: "+1w", 
-    numberOfMonths: 2, 
-    changeMonth: true, 
-    changeYear: true, 
-    maxDate: '+2Y', 
-    onClose: function( selectedDate ) { 
-    $( "#datedebut" ).datepicker( "option", "maxDate", selectedDate ); 
-    } 
-  });     
-});
-</script>
-		
 
 <?php endif;
 require('../inc/footer.php');

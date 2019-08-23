@@ -17,7 +17,6 @@ main{margin-top: 5px;}
 
 .titre{background-color: rgba(0, 0, 0, .3); padding: .3%;}
 
-.accueil_vehicule{text-align: center;}
 .accueil_vehicule img{width: 20%;}
 .bonjour{color: red; text-transform: uppercase;}
 .bonjour strong{background-color: black;} 
@@ -28,8 +27,10 @@ a.disabled {
   background-color: grey !important;
 }
 
-#prixx{background-color: rgba(15, 100, 50, .4);
-padding: 5px 32px;}
+#prixx{
+	background-color: rgba(15, 100, 50, .4);
+	padding: 5px 32px;
+}
 
 footer{
 	padding: 3%;
