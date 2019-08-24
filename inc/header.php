@@ -21,125 +21,164 @@
 <body>
 
 	<header class="text-center">
-    <h1 class="text-light text-center pt-5">
-    	Bienvenue à Bord
-    </h1>
-    <h2 class="text-light text-center">Location de véhicule 24h/24 7j/7</h2>
 
-    <nav>
-      <?php if( isConnected() ): ?>
-      <div class="text-light text-right">
-        <strong>Bonjour <?= $_SESSION['membre']['prenom']; ?></strong>
-      </div>
-      <a href="<?= RACINE_SITE ?>" class="btn btn-warning">Accueil</a>
-      <a href="<?= RACINE_SITE.'membre/compte.php'?>" class="btn btn-warning">Mon compte</a>
-      <?php if( isAdmin() ): ?>
-        <a href="<?= RACINE_SITE.'admin/gestion_agence.php'?>" class="btn btn-success">Agence</a>
-        <a href="<?= RACINE_SITE.'admin/gestion_vehicule.php'?>" class="btn btn-success">Véhicule</a>
-        <a href="<?= RACINE_SITE.'admin/gestion_membre.php'?>" class="btn btn-success">Membre</a>
-        <a href="<?= RACINE_SITE.'admin/gestion_commande.php'?>" class="btn btn-success">Commandee</a>
-      <?php endif; ?>
-      <a href="<?= RACINE_SITE .'connexion.php?action=deconnexion' ?>" class="btn btn-danger">
-        Déconnexion
-      </a>
-      <?php else: ?>
+        <h1 class="text-light text-center pt-5">
+        	Bienvenue à Bord
+        </h1>
 
-        <button class="btn btn-success" data-toggle="modal" data-target="#inscription">
-          Inscription
-        </button>
-        <button class="btn btn-success" data-toggle="modal" data-target="#connexion">
-          Connexion
-        </button>
-      <?php endif; ?>
-    </nav>
+        <h2 class="text-light text-center">Location de véhicule 24h/24 7j/7</h2>
 
-    <!-- Modal inscription -->
-    <div class="modal fade" id="inscription" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">S'inscrire</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form method="post" action="<?= RACINE_SITE .'inscription.php'?>">
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="text" id="pseudo" name="pseudo" placeholder="votre pseudo" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="password" id="mdp" name="mdp" placeholder="votre password" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="text" id="nom" name="nom" placeholder="votre nom" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="text" id="prenom" name="prenom" placeholder="votre prénom" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="text" id="mail" name="mail" placeholder="votre courriel" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <select class="form-control" name="civilite">
-                  <option value="m">Homme</option>   
-                  <option value="f">Femme</option>          
-                </select>                
-              </div>
-              <input type="submit" name="inscription" value="S'inscrire" class="btn btn-primary">
-              <button class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            </form>
-          </div>
-          </div>
-      </div>
-    </div>
-    <!-- Fin modal inscription -->
 
-    <!-- Modal connexion -->
-    <div class="modal fade" id="connexion" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Se connecter</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form method="post" action="<?= RACINE_SITE .'connexion.php'?>">
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="text" name="pseudo" placeholder="votre pseudo" class="form-control">
+        <nav>
+
+            <?php if( isConnected() ): ?>
+
+                <div class="text-light text-right">
+                    <strong>Bonjour <?= $_SESSION['membre']['prenom']; ?></strong>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="password" name="mdp" placeholder="votre password" class="form-control">
+
+                <a href="<?= RACINE_SITE ?>" class="btn btn-warning">Accueil</a>
+                <a href="<?= RACINE_SITE.'membre/compte.php'?>" class="btn btn-warning">Mon compte</a>
+
+                <?php if( isAdmin() ): ?>
+                    <a href="<?= RACINE_SITE.'admin/gestion_agence.php'?>" class="btn btn-success">Agence</a>
+                    <a href="<?= RACINE_SITE.'admin/gestion_vehicule.php'?>" class="btn btn-success">Véhicule</a>
+                    <a href="<?= RACINE_SITE.'admin/gestion_membre.php'?>" class="btn btn-success">Membre</a>
+                    <a href="<?= RACINE_SITE.'admin/gestion_commande.php'?>" class="btn btn-success">Commandee</a>
+                <?php endif; ?>
+
+                <a href="<?= RACINE_SITE .'connexion.php?action=deconnexion' ?>" class="btn btn-danger">
+                    Déconnexion
+                </a>
+
+            <?php else: ?>
+
+                <!-- boutons modal -->
+                <button class="btn btn-success" data-toggle="modal" data-target="#inscription">
+                  Inscription
+                </button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#connexion">
+                  Connexion
+                </button>
+
+            <?php endif; ?>
+
+        </nav>
+
+        <!-- Modal inscription -->
+        <div class="modal fade" id="inscription" tabindex="-1">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">S'inscrire</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form method="post" action="<?= RACINE_SITE .'inscription.php'?>">
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" id="pseudo" name="pseudo" placeholder="votre pseudo" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="password" id="mdp" name="mdp" placeholder="votre password" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" id="nom" name="nom" placeholder="votre nom" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" id="prenom" name="prenom" placeholder="votre prénom" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" id="mail" name="mail" placeholder="votre courriel" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control" name="civilite">
+                                    <option value="m">Homme</option>   
+                                    <option value="f">Femme</option>          
+                                </select>                
+                            </div>
+
+                            <input type="submit" name="inscription" value="S'inscrire" class="btn btn-primary">
+                            <button class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+
+                        </form>
+
+                    </div>
                 </div>
-              </div>
-              <input type="submit" name="inscription" value="Se connecter" class="btn btn-primary">
-              <button class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- Fin modal connexion -->
+        <!-- Fin modal inscription -->
+
+        <!-- Modal connexion -->
+        <div class="modal fade" id="connexion" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Se connecter</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form method="post" action="<?= RACINE_SITE .'connexion.php'?>">
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="pseudo" placeholder="votre pseudo" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="password" name="mdp" placeholder="votre password" class="form-control">
+                                </div>
+                            </div>
+
+                            <input type="submit" name="inscription" value="Se connecter" class="btn btn-primary">
+                            <button class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            
+                        </form>
+
+                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin modal connexion -->
     
-  </header>
+    </header>
+
 	<main>
+
     <?php 
+
       if(isset($_SESSION['sendMessage'])) : ?>
+
         <h3 id='sendMessage'> <?= $_SESSION['sendMessage']; ?></h3>;
+
         <?php unset($_SESSION['sendMessage']); ?>
+
     <?php endif; ?>

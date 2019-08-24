@@ -1,4 +1,5 @@
 <?php
+
 require('../inc/modele.php');
 
 if( !isConnected() )
@@ -6,6 +7,7 @@ if( !isConnected() )
 
 $numLoc = 1;
 
+//liste de toutes les commandes
 $query = execRequete("SELECT * 
 					  FROM commande c, vehicule v, agences a, membre m 
 					  WHERE c.id_vehicule = v.id_vehicule 
@@ -13,6 +15,8 @@ $query = execRequete("SELECT *
 					  AND m.id_membre = c.id_membre"
 					  );
 
+
+//fitre des commandes par agence
 if( isset($_GET['action']) && $_GET['action'] == 'filtre_commande' ){
 	$query = execRequete("SELECT * 
 					  FROM commande c, vehicule v, agences a, membre m 
@@ -25,6 +29,7 @@ if( isset($_GET['action']) && $_GET['action'] == 'filtre_commande' ){
 }
 
 $historique_loca = $query->fetchAll();
+
 
 require('../inc/header.php');
 require('../template/gestion_commande.phtml');

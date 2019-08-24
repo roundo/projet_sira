@@ -1,5 +1,7 @@
 
+
 <div class="container">
+
 	<h3 class="titre">Gestion des Commandes</h3>
 
 	<select id="filtre" class="mb-2 bg-light">
@@ -10,6 +12,7 @@
 	</select>
 
 	<?php if( $historique_loca ): ?>
+
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -24,8 +27,10 @@
 					<th>Client</th>
 				</tr>
 			</thead>
+
 			<?php foreach( $historique_loca as $cle => $valeur ): ?>
-				<?php $nbj = nbjour( $valeur['date_heure_depart'], $valeur['date_heure_fin'] ); 
+
+				<?php $nombre_jour_loue = nbjour( $valeur['date_heure_depart'], $valeur['date_heure_fin'] ); 
 					 
 				?>
 				<tr>
@@ -35,17 +40,21 @@
 					<td> <?= $valeur['date_heure_depart']; ?> </td>
 					<td> <?= $valeur['date_heure_fin']; ?> </td>
 					<td> <?= $valeur['prix_total']; ?> </td>
-					<td> <?= $nbj; ?> </td>
+					<td> <?= $nombre_jour_loue; ?> </td>
 					<td> <?= encours( $valeur['date_heure_fin'] ); ?> </td>
-					<td> <a href="<?= RACINE_SITE.'admin/gestion_membre.php' ?>"><?= $valeur['prenom'] ?></a>  </td>
+					<td> 
+						<a href="<?= RACINE_SITE.'admin/gestion_membre.php' ?>"><?= $valeur['prenom'] ?></a>  
+					</td>
 				</tr>
 			<?php endforeach; ?>
 
 		</table>
+
 	<?php else: ?>
 		<h3 class="titre text-center">Aucune commande enregistrée !!</h3>
 	<?php endif; ?>
 	
 </div>
+
 
 <script type="text/javascript" src="<?= RACINE_SITE . 'utilities/js/redirect.js' ?>"></script>

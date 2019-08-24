@@ -1,5 +1,4 @@
 
-
 <?php
 
 	require_once('inc/modele.php');
@@ -10,6 +9,8 @@
                             ON v.id_agence = a.id_agence
                             ORDER BY v.titre DESC");
 
+
+  //liste de véhicules par ordre croissant
   if( isset($_GET['action']) && $_GET['action'] == 'croissant' ){
     $vehicules = execRequete("SELECT v.*, a.titre as titreagence
                             FROM vehicule v
@@ -18,6 +19,9 @@
                             ORDER BY v.prix_journalier ASC");
 
   }
+
+
+  //liste de véhicules par ordre décroissant
   if( isset($_GET['action']) && $_GET['action'] == 'decroissant' ){
     $vehicules = execRequete("SELECT v.*, a.titre as titreagence
                             FROM vehicule v

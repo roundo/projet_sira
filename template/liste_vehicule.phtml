@@ -1,43 +1,58 @@
 
 <div class="container mx-auto"> 
-    <form class="formulaire"><!--  float-right mb-5 -->
-	  <div class="row">
-	      <div class="form-group  col-2">
-	        <select class="form-control text-center bg-light" id="filtre">
-	          <option>-- filtre --</option>
-	          <option href="?action=croissant">prix croissant</option>
-	          <option href="?action=decroissant">prix décroissant</option>
-	        </select>
-	      </div>
-	  </div>
-    </form>
 
-   <div class="row">
-    <?php if ( $vehicules->rowCount() > 0 ) : ?>
-    
-    <?php while( $vehicule = $vehicules->fetch(PDO::FETCH_ASSOC) ): ?>	
-    	<?php   extract($vehicule); ?>			
-      <div class="accueil_vehicule card text-center col-2 mb-3">
-        
-    		<?php if(!empty($photo)): ?>
-          <div>
-            <img src="<?= RACINE_SITE . 'utilities/img/' . $photo ?>" alt="<?= $titre ?>" class="img-fluid">
-          </div>
-        <?php endif; ?>              
-        <div><strong><?= $titre ?></strong></div>
-        
-          <?= $description ?>
-        
-          <div><?= $prix_journalier ?> € / jour- <?= $titreagence ?></div>
-          <br>
-          <a href="<?= RACINE_SITE .'template/reservation.php?reservation='.$id_vehicule ?>" class="btn btn-success <?= enLocation($id_vehicule) ? 'disabled' : '' ?>">Réserver</a>
-			  <hr>
+  <form class="formulaire"><!--  float-right mb-5 -->
+    <div class="row">
+      <div class="form-group  col-2">
+
+        <select class="form-control text-center bg-light" id="filtre">
+          <option>-- filtre --</option>
+          <option href="?action=croissant#ancre_modif">prix croissant</option>
+          <option href="?action=decroissant#ancre_modif">prix décroissant</option>
+        </select>
+
       </div>
-    <?php endwhile; ?>
-  <?php else : ?>
-      <p colspan="6">Pas encore de véhicules enregistrés!!</p>
-  <?php endif; ?>
-</div>
+    </div>
+  </form>
+
+  <div class="row">
+      <?php if ( $vehicules->rowCount() > 0 ) : ?>
+       
+         <?php while( $vehicule = $vehicules->fetch(PDO::FETCH_ASSOC) ): ?>
+
+          	<?php   extract($vehicule); ?>	
+
+            <div class="accueil_vehicule card text-center col-2 mb-3" id="ancre_modif">
+              
+          		<?php if(!empty($photo)): ?>
+
+                <div>
+                  <img src="<?= RACINE_SITE . 'utilities/img/' . $photo ?>" alt="<?= $titre ?>" class="img-fluid">
+                </div>
+
+               <?php endif; ?>  
+
+               <div><strong><?= $titre ?></strong></div>
+              
+               <?= $description ?>
+              
+               <div><?= $prix_journalier ?> € / jour- <?= $titreagence ?></div>
+               <br>
+               <a href="<?= RACINE_SITE .'reservation.php?reservation='.$id_vehicule ?>" class="btn btn-success <?= enLocation($id_vehicule) ? 'disabled' : '' ?>">
+                  Réserver
+               </a>
+      			<hr>
+            </div>
+
+         <?php endwhile; ?>
+
+      <?php else : ?>
+
+         <p colspan="6">Pas encore de véhicules enregistrés!!</p>
+
+      <?php endif; ?>
+
+   </div>
 </div>
 
 <script type="text/javascript" src="<?= RACINE_SITE . 'utilities/js/redirect.js' ?>"></script>

@@ -1,4 +1,5 @@
 <?php
+
 require('../inc/modele.php');
 
 const SUPPRESSION = "Suppression impossible! Ce membre a au moins une commande !";
@@ -8,8 +9,11 @@ if( !isAdmin() ){
 	exit();
 }
 
+
 $membres = execRequete("SELECT * FROM membre");
 //$membres = $membres->fetchAll();
+
+
 
 /*Cas de suppression*/
 if( isset($_GET['action']) && $_GET['action'] == 'suppression' ){
@@ -19,19 +23,24 @@ if( isset($_GET['action']) && $_GET['action'] == 'suppression' ){
 	exit();
 }
 
+
+
 /*Cas de modification*/
 if( isset($_GET['action']) && $_GET['action'] == 'modification' && isset($_GET['id'])){
 	$membre_actuel = execRequete("SELECT * FROM membre WHERE id_membre = ?", array($_GET['id']));
 
 	$membre_actuel = $membre_actuel->fetch();
-	//header("location:".RACINE_SITE."admin/gestion_membre.php");
 }
+
+
 
 // Cas Ajout/Modification
 if( isset($_POST['pseudo']) ){
+
 	extract($_POST);
+
+	//si id_membre, c'est une mise à jour
 	if( !empty($_POST['id_membre']) ){
-		var_dump($_POST);
 
 		execRequete( "UPDATE membre 
 					  SET pseudo=:pseudo, mdp=:mdp, nom=:nom, prenom=:prenom, email=:mail, civilite=:sexe, statut=:statut 
@@ -47,7 +56,7 @@ if( isset($_POST['pseudo']) ){
 					  		"id_membre" => $id_membre 
 					  	));
 
-	}else{
+	}else{//sinon c'est une nouvelle insertion de membre
 		execRequete("REPLACE INTO membre 
 					VALUES(:id_membre, :pseudo,:mdp,:nom, :prenom,:mail,:sexe,:statut, Now() )",
 					array(
@@ -65,6 +74,7 @@ if( isset($_POST['pseudo']) ){
 	header("location:".RACINE_SITE."admin/gestion_membre.php");
 	exit();
 }
+
 
 require('../inc/header.php');
 require('../template/gestion_membre.phtml');

@@ -1,4 +1,5 @@
 <?php
+/*debut de session sur ce fichier que j'inclus partout. Cela me permet de ne pas faire session_start partout*/
 session_start();
 
 $pdo = new PDO
@@ -14,5 +15,6 @@ $pdo->exec("SET NAMES UTF8");
 
 
 define("RACINE_SITE", "/projet_sira/");
+
 require_once("fonctions.php");
 

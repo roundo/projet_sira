@@ -1,7 +1,10 @@
 
 <div class="container">
+
 		<h3 class="titre">Gestion des Membres</h3>
+
 		<table class="table table-bordered table-striped">
+
 			<thead class="thead-dark">
 			<tr scope="col">
 				<th>Pseudo</th>
@@ -14,8 +17,11 @@
 				<th>Actions	</th>
 			</tr>
 		</thead>
+
 	<?php while($membre = $membres->fetch()): ?>
+
 		<?php extract($membre); ?>
+
 		<tr>
 			<td><?= $pseudo; ?></td>
 			<td><?= $prenom; ?></td>
@@ -25,20 +31,29 @@
 			<td><?= $statut; ?></td>
 			<td><?= $date_enregistrement; ?></td>
 			<td>
-				<a href="?action=modification&id=<?= $id_membre ?>"><i class="fas fa-pen"></i>
+				<a href="?action=modification&id=<?= $id_membre ?>#ancre_modif">
+					<i class="fas fa-pen"></i>
 				</a> 
 				- 
-				<a href="?action=suppression&id=<?= $id_membre ?>"><i class="fas fa-trash-alt"></i>
+				<a href="?action=suppression&id=<?= $id_membre ?>">
+					<i class="fas fa-trash-alt"></i>
 				</a> 
 			</td>
 		</tr>
+
 	<?php endwhile; ?>
+
 	</table>
+
 	<hr>
+
 	<!-- formulaire  Ajout/Modication -->
 		<h4 class="titre">Ajout/Modif d'un Membre</h4>
-		<form action="" method="post" class="formulaire">
+
+		<form action="" method="post" class="formulaire" id="ancre_modif">
+
 			<input type="hidden" name="id_membre" value="<?= $membre_actuel['id_membre'] ?? 0 ?>">
+
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="pseudo">Pseudo</label>
@@ -46,6 +61,7 @@
 						<input type="text" name="pseudo" class="form-control" placeholder="Votre pseudo" value="<?= $membre_actuel['pseudo'] ?? '' ?>">
 					</div>
 				</div>
+
 				<div class="form-group col-6">
 					<label for="meil">E-mail</label>
 					<div class="input-group">
@@ -53,6 +69,8 @@
 					</div>
 				</div>
 			</div>
+
+
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="mdp">Mot de passe</label>
@@ -60,14 +78,19 @@
 						<input type="password" name="mdp" class="form-control" placeholder="Votre password" value="<?= $membre_actuel['mdp'] ?? '' ?>">
 					</div>
 				</div>
+
 				<div class="form-group col-2">
 					<label for="civilite">Civilité</label>
 					<select class="form-control" name="civilite">
-			        	<option value="m" <?= isset($membre_actuel['civilite']) && $membre_actuel['civilite']=='m' ? 'selected' : '' ?>>Homme</option>   
-			      		<option value="f" <?= isset($membre_actuel['civilite']) && $membre_actuel['civilite']=='f' ? 'selected' : '' ?>>Femme</option>        
+			        	<option value="m" <?= isset($membre_actuel['civilite']) && $membre_actuel['civilite']=='m' ? 'selected' : '' ?>>Homme
+			        	</option>   
+			      		<option value="f" <?= isset($membre_actuel['civilite']) && $membre_actuel['civilite']=='f' ? 'selected' : '' ?>>Femme
+			      		</option>        
 			      </select>                
 			    </div>
 			</div>
+
+
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="nom">Nom</label>
@@ -75,6 +98,7 @@
 						<input type="text" name="nom" class="form-control" placeholder="Votre nom" value="<?= $membre_actuel['nom'] ?? '' ?>">
 					</div>
 				</div>
+
 			    <div class="form-group col-2">
 			    	<label for="statut">Statut</label>
 			    	<select class="form-control" name="statut">
@@ -83,6 +107,8 @@
 			      </select>                
 			    </div>
 			</div>
+
+
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="prenom">Prénom</label>
@@ -90,11 +116,15 @@
 						<input type="text" name="prenom" class="form-control" placeholder="Votre prénom" value="<?= $membre_actuel['prenom'] ?? '' ?>">
 					</div>
 				</div>
+
 			    <div class="form-group col-6">
 			    	<div><label><br></label></div>
 			    	<input type="submit" name="inscription" value="Enregistrer" class="btn btn-primary">
 			    	<input type="reset" class="btn btn-secondary">
 			    </div>
 			</div>
+
+
 		</form>
+
 	</div>

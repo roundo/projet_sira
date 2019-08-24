@@ -25,6 +25,8 @@ date_debut.addEventListener('change', function(e){
 });
 
 
+
+
 date_fin.addEventListener('focus', function(e) {
 
     var dd = new Date();

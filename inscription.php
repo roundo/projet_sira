@@ -24,8 +24,10 @@ if(isset($_POST['pseudo'])){
 									"sexe"   => $civilite,
 								   ) );
 
-		$_SESSION['sendMessage'] = "<span class='text-danger'>Inscription réussie</span>";
+		$_SESSION['sendMessage'] = "<span class='text-success'>Inscription réussie</span>";
 		
 	}
+
 	header("location: ".RACINE_SITE);
+	exit();
 }

@@ -15,12 +15,12 @@ function execRequete($req, $params = array()){
 		$res->execute($params);
 		if( !$res ){
 			throw new Exception($error);
-		}else
-			return $res;
+		}
 	}catch(PDOException $e){
 		$_SESSION['sendMessage'] = SUPPRESSION; 
 		echo $e->getMessage();
 	}
+	return $res;
 }
 
 function isConnected(){
@@ -42,7 +42,7 @@ function nbJour( $date_debut, $date_fin ){
 	 
 	$nbJoursTimestamp = $date_f - $date_d;
 
-	$nbJours = $nbJoursTimestamp/86400; // 86 400 = 60*60*24
+	$nbJours = $nbJoursTimestamp/86400+1; // 86 400 = 60*60*24
 	 
 	return $nbJours;
 }
