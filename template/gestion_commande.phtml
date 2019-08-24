@@ -1,8 +1,14 @@
 
 <div class="container">
-	<h2 class="text-center">
-		Liste de locations clients
-	</h2>
+	<h3 class="titre">Gestion des Commandes</h3>
+
+	<select id="filtre" class="mb-2 bg-light">
+	<option>Commande par Agence</option>
+	<?php foreach( liste_agence() as $cle => $valeur ): ?>
+		<option href="?action=filtre_commande&agence=<?= $valeur['id_agence']; ?>"><?= $valeur['titre']; ?></option>
+	<?php endforeach; ?>
+	</select>
+
 	<?php if( $historique_loca ): ?>
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
@@ -41,3 +47,5 @@
 	<?php endif; ?>
 	
 </div>
+
+<script type="text/javascript" src="<?= RACINE_SITE . 'utilities/js/redirect.js' ?>"></script>

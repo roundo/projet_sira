@@ -7,6 +7,16 @@ if( !isAdmin() )
 	header('location:'.RACINE_SITE);
 
 $list_vehicule = execRequete("SELECT v.*, a.titre t_agence FROM vehicule v, agences a WHERE v.id_agence = a.id_agence");
+
+/*fitre par agence*/
+if( isset($_GET['action']) && $_GET['action'] == 'filtre_agence' ){
+	$list_vehicule = execRequete("SELECT v.*, a.titre t_agence 
+								  FROM vehicule v, agences a 
+								  WHERE v.id_agence = a.id_agence
+								  AND a.id_agence = :filtre_agence",
+								  array('filtre_agence' => $_GET['id_agence']));
+}
+
 $vehicule = $list_vehicule->fetchAll();	
 
 /*cas d'ajout*/

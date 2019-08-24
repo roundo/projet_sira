@@ -67,27 +67,27 @@
             <form method="post" action="<?= RACINE_SITE .'inscription.php'?>">
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" name="pseudo" placeholder="votre pseudo" class="form-control">
+                  <input type="text" id="pseudo" name="pseudo" placeholder="votre pseudo" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <input type="password" name="mdp" placeholder="votre password" class="form-control">
+                  <input type="password" id="mdp" name="mdp" placeholder="votre password" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" name="nom" placeholder="votre nom" class="form-control">
+                  <input type="text" id="nom" name="nom" placeholder="votre nom" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" name="prenom" placeholder="votre prénom" class="form-control">
+                  <input type="text" id="prenom" name="prenom" placeholder="votre prénom" class="form-control">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" name="mail" placeholder="votre courriel" class="form-control">
+                  <input type="text" id="mail" name="mail" placeholder="votre courriel" class="form-control">
                 </div>
               </div>
               <div class="form-group">

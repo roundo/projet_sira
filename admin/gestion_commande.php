@@ -13,6 +13,17 @@ $query = execRequete("SELECT *
 					  AND m.id_membre = c.id_membre"
 					  );
 
+if( isset($_GET['action']) && $_GET['action'] == 'filtre_commande' ){
+	$query = execRequete("SELECT * 
+					  FROM commande c, vehicule v, agences a, membre m 
+					  WHERE c.id_vehicule = v.id_vehicule 
+					  AND c.id_agence = a.id_agence
+					  AND m.id_membre = c.id_membre
+					  AND a.id_agence = :agence",
+					  array("agence" => $_GET['agence'])
+					  );
+}
+
 $historique_loca = $query->fetchAll();
 
 require('../inc/header.php');

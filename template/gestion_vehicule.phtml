@@ -43,10 +43,13 @@
  			<div class="form-group col-12">
  				<label>Agence</label>
  				<div class="input-group">
- 					<select class="form-control" name="id_agence">
+ 					<select class="form-control" name="id_agence" id="filtre">
+ 						<option>-- choix Agence --</option>
  						<?php $agence = execRequete("SELECT * FROM agences");
  						while ( $titreagence = $agence->fetch() ): ?>
- 							<option value="<?= $titreagence['id_agence']; ?>"<?= isset($vehicule_actuel['id_agence']) && $vehicule_actuel['id_agence'] == $titreagence['id_agence'] ? 'selected' : '' ?>>
+ 							<option value="<?= $titreagence['id_agence']; ?>"<?= isset($vehicule_actuel['id_agence']) && $vehicule_actuel['id_agence'] == $titreagence['id_agence'] ? 'selected' : '' ?>
+ 							href="?action=filtre_agence&id_agence=<?= $titreagence['id_agence'] ?>">
+
  								<?= $titreagence['titre']; ?>
  							</option>
  						<?php endwhile; ?>
@@ -109,3 +112,5 @@
 
  	</form>
 </div>
+
+<script type="text/javascript" src="<?= RACINE_SITE . 'utilities/js/redirect.js' ?>"></script>

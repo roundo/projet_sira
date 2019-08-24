@@ -69,3 +69,9 @@ function enLocation( $id_vehicule_loue ){
   	return true;
   return false;	
 }
+
+function liste_agence(){
+	$query = execRequete("SELECT * FROM agences");
+
+	return $query->fetchAll();
+}

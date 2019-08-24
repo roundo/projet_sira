@@ -1,21 +1,23 @@
-<?php
 
-	require_once('modele.php');
- 
-	$vehicules = execRequete("SELECT v.*, a.titre as titreagence
-                            FROM vehicule v
-                            INNER JOIN agences a
-                            ON v.id_agence = a.id_agence
-                            ORDER BY v.titre DESC");
+<div class="container mx-auto"> 
+    <form class="formulaire"><!--  float-right mb-5 -->
+	  <div class="row">
+	      <div class="form-group  col-2">
+	        <select class="form-control text-center bg-light" id="filtre">
+	          <option>-- filtre --</option>
+	          <option href="?action=croissant">prix croissant</option>
+	          <option href="?action=decroissant">prix décroissant</option>
+	        </select>
+	      </div>
+	  </div>
+    </form>
 
-              //INNER JOIN commande c  ON c.id_vehicule = c.id_vehicule  GROUP BY v.id_vehicule
-
-
-  if ( $vehicules->rowCount() > 0 ) : ?>
+   <div class="row">
+    <?php if ( $vehicules->rowCount() > 0 ) : ?>
     
     <?php while( $vehicule = $vehicules->fetch(PDO::FETCH_ASSOC) ): ?>	
     	<?php   extract($vehicule); ?>			
-      <div class="accueil_vehicule card text-center container">
+      <div class="accueil_vehicule card text-center col-2 mb-3">
         
     		<?php if(!empty($photo)): ?>
           <div>
@@ -35,3 +37,7 @@
   <?php else : ?>
       <p colspan="6">Pas encore de véhicules enregistrés!!</p>
   <?php endif; ?>
+</div>
+</div>
+
+<script type="text/javascript" src="<?= RACINE_SITE . 'utilities/js/redirect.js' ?>"></script>
