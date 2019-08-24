@@ -15,7 +15,7 @@
     
     <?php while( $vehicule = $vehicules->fetch(PDO::FETCH_ASSOC) ): ?>	
     	<?php   extract($vehicule); ?>			
-      <div class="accueil_vehicule card text-center">
+      <div class="accueil_vehicule card text-center container">
         
     		<?php if(!empty($photo)): ?>
           <div>

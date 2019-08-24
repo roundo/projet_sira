@@ -1,7 +1,7 @@
 <?php 
 require('../inc/modele.php');
 if( !isConnected() ){
-	$_SESSION['reserv'] = '<h2 class="text-center pt-5">Connectez vous!!</h2>';
+	$_SESSION['sendMessage'] = '<span class="text-danger">Connectez vous pour faire une location!!</span>';
 	header('location:'.RACINE_SITE);
 	exit();
 }

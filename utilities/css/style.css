@@ -1,4 +1,4 @@
-
+body{margin: 0 auto;}
 
 header{
 	background:url('../img/background1.jpg');
@@ -13,11 +13,16 @@ header{
     margin-bottom: 2px;
 }*/
 
+h1, h2{
+	text-shadow: 2px 2px 2px black;
+}
+
 main{margin-top: 5px;}
 
 .titre{background-color: rgba(0, 0, 0, .3); padding: .3%;}
 
-.accueil_vehicule img{width: 20%;}
+.accueil_vehicule{display: inline-block;margin: 0 10px;}
+.accueil_vehicule img{width: 10em; margin: 0 10px}
 .bonjour{color: red; text-transform: uppercase;}
 .bonjour strong{background-color: black;} 
 
@@ -37,12 +42,24 @@ footer{
 	margin-top: 5%;
 }
 
-.erreurLog{color: red; text-align: center;
-    margin-top: -40px;
-}
 
 .inscription{color: blue; text-align: center;}
 
 .img_tab{
 	width: 40%;
 }
+
+
+#sendMessage
+{
+	position: absolute;
+	background-color: rgb(173,255,47);
+	padding: 5px;
+	top: 60%;
+	left: 10%;
+	right: 10%;
+	text-align: center;
+	border-radius: 20px;
+}
+/*cacher le message 4s après*/
+.hide{display: none;}

@@ -16,7 +16,7 @@ if( isset($_POST['mdp']) && isset($_POST['pseudo']) ){
 		$_SESSION['membre'] = $res;
 		
 	}else{
-		$_SESSION['erreur'] = "<h3 class='erreurLog'>Identifiants incorrects ou utilisateur inexistant</h3>";
+		$_SESSION['sendMessage'] = "<span class='text-danger'>Identifiants incorrects ou utilisateur inexistant</span>";
 	}
 	header("location: ".RACINE_SITE);
 }

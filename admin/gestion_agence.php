@@ -1,6 +1,8 @@
 <?php 
 require('../inc/modele.php');
 
+const SUPPRESSION = "Suppression impossible! Cette agence possède des véhicules";
+
 if( !isAdmin() )
 	header('location:'.RACINE_SITE);
 
@@ -34,7 +36,7 @@ if( isset($_POST['titre']) ){
 	/*mise à jour*/
 	if( !empty($_POST['id_agence']) ){
 		var_dump($_POST);
-		echo $id_agence;
+
 		execRequete("UPDATE agences SET titre=:titre, adresse=:add, ville=:ville, cp=:cp, description=:descr, photo=:photo WHERE id_agence = :id_agence",
 					array(	
 							"titre" => $titre,
@@ -80,7 +82,7 @@ if( isset($_GET['action']) && $_GET['action'] == 'suppression' ){
 	$sup = execRequete("DELETE FROM agences WHERE id_agence = ?",
 				 array($_GET['id']));
 
-	if( $resultat->rowCount() != 0 && !$sup ){
+	if( $resultat->rowCount() != 0 && $sup ){
 		$agence = $resultat->fetch();
 		$phot_a_supp = $_SERVER['DOCUMENT_ROOT'].RACINE_SITE.'utilities/img/'.$agence['photo'];
 		if( !empty($agence['photo']) && file_exists($phot_a_supp) ){

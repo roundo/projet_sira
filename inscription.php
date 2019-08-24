@@ -8,7 +8,7 @@ if(isset($_POST['pseudo'])){
 	$logExist = execRequete("SELECT * FROM membre WHERE pseudo = :login", ["login" => $pseudo]);
 
 	if( $logExist->rowCount() != 0 ){
-		echo "<div class='text-center'> ce login existe déjà</div>";
+		$_SESSION['sendMessage'] = "<span class='text-danger'>Ce login existe déjà !!</span>";
 	}else{
 	
 		$query = "INSERT INTO membre(pseudo, mdp, nom, prenom, email, civilite, statut, date_enregistrement) 
@@ -24,8 +24,8 @@ if(isset($_POST['pseudo'])){
 									"sexe"   => $civilite,
 								   ) );
 
-		$_SESSION['erreur'] = "<h3 class='inscription'>Inscription réussie</h3>";
-		header("location: ".RACINE_SITE);
+		$_SESSION['sendMessage'] = "<span class='text-danger'>Inscription réussie</span>";
+		
 	}
-
+	header("location: ".RACINE_SITE);
 }

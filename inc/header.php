@@ -3,25 +3,23 @@
 <head>
 	<meta charset="utf-8">
 	<title>Projet Sira</title>
+
 	<link rel="stylesheet" href="<?= RACINE_SITE. 'utilities/css/bootstrap/css/bootstrap.min.css'?>">
   <link rel="stylesheet" href="<?= RACINE_SITE. 'utilities/css/bootstrap/js/bootstrap.min.js'?>">
+
 	<!-- Scripts nécessaires pour Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" ></script>
+
   <!-- css perso -->
   <link rel="stylesheet" href="<?= RACINE_SITE .'utilities/css/font/css/all.css'?>">
   <link rel="stylesheet" href="<?= RACINE_SITE. 'utilities/css/style.css'?>">
   <link rel="stylesheet" href="<?= RACINE_SITE .'utilities/css/normalize.css' ?>">
-  <link type="text/css" href="<?= RACINE_SITE .'jquery-ui/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet' ?>" /> 
-
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
 </head>
 <body>
+
 	<header class="text-center">
     <h1 class="text-light text-center pt-5">
     	Bienvenue à Bord
@@ -39,7 +37,7 @@
         <a href="<?= RACINE_SITE.'admin/gestion_agence.php'?>" class="btn btn-success">Agence</a>
         <a href="<?= RACINE_SITE.'admin/gestion_vehicule.php'?>" class="btn btn-success">Véhicule</a>
         <a href="<?= RACINE_SITE.'admin/gestion_membre.php'?>" class="btn btn-success">Membre</a>
-        <a href="<?= RACINE_SITE.'admin/commande.php'?>" class="btn btn-success">Commandee</a>
+        <a href="<?= RACINE_SITE.'admin/gestion_commande.php'?>" class="btn btn-success">Commandee</a>
       <?php endif; ?>
       <a href="<?= RACINE_SITE .'connexion.php?action=deconnexion' ?>" class="btn btn-danger">
         Déconnexion
@@ -141,23 +139,7 @@
   </header>
 	<main>
     <?php 
-      if(isset($_SESSION['erreur'])){ 
-        echo "<h3 class='erreurLog'>".$_SESSION['erreur']."</h3>";
-        unset($_SESSION['erreur']); 
-      }if( isset($_SESSION['inscription']) ){
-        echo $_SESSION['inscription'];
-        unset( $_SESSION['inscription'] );
-      }if( isset($_SESSION['err']) ){
-        echo "<h3 class='erreurLog'>".$_SESSION['err']."</h3>";
-        unset($_SESSION['err']);
-
-      }
-      ?>
-      <?php if( isset($_SESSION['reserv']) ): ?>
-        <?= $_SESSION['reserv']; ?>
-        <script type="text/javascript">
-          alert("Veuillez vous connecter !");
-        </script>
-        <?php unset( $_SESSION['reserv'] ); ?>
-            
-      <?php endif; ?>
+      if(isset($_SESSION['sendMessage'])) : ?>
+        <h3 id='sendMessage'> <?= $_SESSION['sendMessage']; ?></h3>;
+        <?php unset($_SESSION['sendMessage']); ?>
+    <?php endif; ?>

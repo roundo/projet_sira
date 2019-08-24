@@ -3,7 +3,7 @@ require('../inc/modele.php');
 if( !isConnected() )
 	header('location:'.RACINE_SITE);
 
-
+$numLoc = 1;
 $query = execRequete("SELECT * FROM commande c, vehicule v, agences a 
 					  WHERE c.id_vehicule = v.id_vehicule 
 					  AND c.id_agence = a.id_agence 
@@ -36,7 +36,7 @@ require('../inc/header.php');
 			</thead>
 			<?php foreach( $historique_loca as $cle => $valeur ): ?><?php $nbj = nbjour( $valeur['date_heure_depart'], $valeur['date_heure_fin'] ) ?>
 				<tr>
-					<td> <?= $valeur['id_commande']; ?> </td>
+					<td> <?= $numLoc++; ?> </td>
 					<td> <?= $valeur['marque']; ?> </td>
 					<td> <?= $valeur['titre']; ?> </td>
 					<td> <?= $valeur['date_heure_depart']; ?> </td>

@@ -14,13 +14,11 @@ function execRequete($req, $params = array()){
 
 		$res->execute($params);
 		if( !$res ){
-			$error = "Suppression impossible";
-		   $_SESSION['err'] = $error;
 			throw new Exception($error);
 		}else
 			return $res;
 	}catch(PDOException $e){
-		$_SESSION['err'] = "sup imp"; 
+		$_SESSION['sendMessage'] = SUPPRESSION; 
 		echo $e->getMessage();
 	}
 }
