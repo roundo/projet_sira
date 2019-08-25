@@ -9,7 +9,7 @@ if( !isAdmin() )
 	header('location:'.RACINE_SITE);
 
 
-$list_vehicule = execRequete("SELECT v.*, a.titre t_agence 
+$list_vehicule = execRequete("SELECT v.*, a.titre t_agence, a.ville 
 						      FROM vehicule v, agences a 
 						      WHERE v.id_agence = a.id_agence");
 
@@ -17,7 +17,7 @@ $list_vehicule = execRequete("SELECT v.*, a.titre t_agence
 
 /*liste de véhicules fitrés par agence*/
 if( isset($_GET['action']) && $_GET['action'] == 'filtre_agence' ){
-	$list_vehicule = execRequete("SELECT v.*, a.titre t_agence 
+	$list_vehicule = execRequete("SELECT v.*, a.titre t_agence, a.ville 
 								  FROM vehicule v, agences a 
 								  WHERE v.id_agence = a.id_agence
 								  AND a.id_agence = :filtre_agence",

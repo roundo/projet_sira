@@ -4,16 +4,17 @@
 
 	<h3 class="titre">Gestion des Commandes</h3>
 
+	<!-- Filtre commande par agence -->
 	<select id="filtre" class="mb-2 bg-light">
-	<option>Commande par Agence</option>
-	<?php foreach( liste_agence() as $cle => $valeur ): ?>
-		<option href="?action=filtre_commande&agence=<?= $valeur['id_agence']; ?>"><?= $valeur['titre']; ?></option>
-	<?php endforeach; ?>
+		<option>Commande par Agence</option>
+		<?php foreach( liste_agence() as $cle => $valeur ): ?>
+			<option href="?action=filtre_commande&agence=<?= $valeur['id_agence']; ?>#ancre_filtre_par_agence"><?= $valeur['titre']; ?></option>
+		<?php endforeach; ?>
 	</select>
 
 	<?php if( $historique_loca ): ?>
 
-		<table class="table table-bordered table-striped">
+		<table class="table table-bordered table-striped" id="ancre_filtre_par_agence">
 			<thead class="thead-dark">
 				<tr>
 					<th>Loc Num</th>

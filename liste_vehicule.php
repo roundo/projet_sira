@@ -7,29 +7,24 @@
                             FROM vehicule v
                             INNER JOIN agences a
                             ON v.id_agence = a.id_agence
-                            ORDER BY v.titre DESC");
+                            ORDER BY v.titre DESC"
+                          );
 
 
-  //liste de véhicules par ordre croissant
-  if( isset($_GET['action']) && $_GET['action'] == 'croissant' ){
+
+
+  //liste de véhicules par ordre croissant ou décroissant
+  if( isset($_GET['action']) && $_GET['action'] == 'filtre' ){
+
     $vehicules = execRequete("SELECT v.*, a.titre as titreagence
-                            FROM vehicule v
-                            INNER JOIN agences a
-                            ON v.id_agence = a.id_agence
-                            ORDER BY v.prix_journalier ASC");
+                              FROM vehicule v
+                              INNER JOIN agences a
+                              ON v.id_agence = a.id_agence
+                              ORDER BY v.prix_journalier ".$_GET['ordre']);
 
   }
 
 
-  //liste de véhicules par ordre décroissant
-  if( isset($_GET['action']) && $_GET['action'] == 'decroissant' ){
-    $vehicules = execRequete("SELECT v.*, a.titre as titreagence
-                            FROM vehicule v
-                            INNER JOIN agences a
-                            ON v.id_agence = a.id_agence
-                            ORDER BY v.prix_journalier DESC");
-
-  }
 
               //INNER JOIN commande c  ON c.id_vehicule = c.id_vehicule  GROUP BY v.id_vehicule
 

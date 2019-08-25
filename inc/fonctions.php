@@ -1,6 +1,7 @@
 <?php
 
 function execRequete($req, $params = array()){
+
 	global $pdo;//globalisation de la variable pdo
 
 	try{
@@ -23,17 +24,21 @@ function execRequete($req, $params = array()){
 	return $res;
 }
 
+
+
 function isConnected(){
 	if(isset($_SESSION['membre']))
 		return true;
 	return false;
 }
 
+
 function isAdmin(){
 	if( isConnected() && $_SESSION['membre']['statut'] == 1 )
 		return true;
 	return false;
 }
+
 
 function nbJour( $date_debut, $date_fin ){
 
@@ -47,6 +52,8 @@ function nbJour( $date_debut, $date_fin ){
 	return $nbJours;
 }
 
+
+
 function encours( $df ){
 	$date_actuelle = date('Y-m-d');
 
@@ -56,12 +63,14 @@ function encours( $df ){
 	return "<span>En cours</span>";
 }
 
+
+
 function enLocation( $id_vehicule_loue ){
 	$date = date('Y-m-d');
 	$location = execRequete("SELECT DISTINCT $id_vehicule_loue 
 							FROM commande 
 						 	WHERE id_vehicule = :id 
-						  	AND date_heure_fin > :dt", 
+						  	AND date_heure_fin >= :dt", 
 						 	array("id" => $id_vehicule_loue, 
 								  "dt" => $date));
 													 			
@@ -69,6 +78,8 @@ function enLocation( $id_vehicule_loue ){
   	return true;
   return false;	
 }
+
+
 
 function liste_agence(){
 	$query = execRequete("SELECT * FROM agences");

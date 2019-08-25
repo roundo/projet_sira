@@ -3,7 +3,7 @@
 
 	<h3 class="titre">Gestion des Véhicules</h3>
 
- 	<table class="table table-bordered table-striped">
+ 	<table class="table table-bordered table-striped" id="ancre_filtre">
  		<tr>
  			<th>Véhicules</th>
  			<th>Agence</th>
@@ -20,7 +20,7 @@
 
  			<tr>
  				<td><?= $valeur['id_vehicule']; ?></td>
- 				<td><?= $valeur['t_agence']; ?></td>
+ 				<td><?= $valeur['ville']; ?></td>
  				<td><?= $valeur['titre']; ?></td>
  				<td><?= $valeur['marque']; ?></td>
  				<td><?= $valeur['modele']; ?></td>
@@ -49,13 +49,9 @@
  	<!-- Fomulaire gestion véhicule -->
  	<h4 class="titre">Ajout/Modif d'un véhicule</h4>
 
- 	<form class="formulaire" method="post" action="" enctype="multipart/form-data" id="ancre_modif">
-
- 		<input type="hidden" name="id_vehicule" value="<?= $vehicule_actuel['id_vehicule'] ?? 0 ?>">
-
- 		<div class="row">
-
- 			<div class="form-group col-12">
+ 	<!-- filte liste véhicule par agence -->
+ 	<div class="row">
+ 			<div class="form-group col-2">
  				<div class="input-group">
 
  					<select class="form-control" name="id_agence" id="filtre">
@@ -64,7 +60,7 @@
  						<?php foreach( liste_agence() as $key => $value ): ?>
 
  							<option value="<?= $value['id_agence']; ?>"<?= isset($vehicule_actuel['id_agence']) && $vehicule_actuel['id_agence'] == $value['id_agence'] ? 'selected' : '' ?>
- 							href="?action=filtre_agence&id_agence=<?= $value['id_agence'] ?>">
+ 							href="?action=filtre_agence&id_agence=<?= $value['id_agence'] ?>#ancre_filtre">
  								<?= $value['titre']; ?>
  							</option>
  						<?php endforeach; ?>
@@ -72,8 +68,12 @@
 
  				</div>
  			</div>
-
  		</div>
+
+
+ 	<form class="formulaire" method="post" action="" enctype="multipart/form-data" id="ancre_modif">
+
+ 		<input type="hidden" name="id_vehicule" value="<?= $vehicule_actuel['id_vehicule'] ?? 0 ?>">
 
  		<div class="row">
  			<div class="form-group col-6">
