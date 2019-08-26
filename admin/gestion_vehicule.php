@@ -22,6 +22,10 @@ if( isset($_GET['action']) && $_GET['action'] == 'filtre_agence' ){
 								  WHERE v.id_agence = a.id_agence
 								  AND a.id_agence = :filtre_agence",
 								  array('filtre_agence' => $_GET['id_agence']));
+
+	$id_agence_filtre = $_GET['id_agence']; 
+
+	echo $id_agence_filtre;
 }
 
 $vehicule = $list_vehicule->fetchAll();	
