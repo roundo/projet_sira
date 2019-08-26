@@ -33,7 +33,7 @@
 					<a href="?action=modification&id=<?= $valeur['id_vehicule'] ?>#ancre_modif">
 						<i class="fas fa-pen"></i>
 					</a> 
-					- 
+					-  
 					<a href="?action=suppression&id=<?= $valeur['id_vehicule'] ?>">
 						<i class="fas fa-trash-alt"></i>
 					</a> 
@@ -49,8 +49,14 @@
  	<!-- Fomulaire gestion véhicule -->
  	<h4 class="titre">Ajout/Modif d'un véhicule</h4>
 
- 	<!-- filte liste véhicule par agence -->
- 	<div class="row">
+
+ 	<form class="formulaire" method="post" action="" enctype="multipart/form-data" id="ancre_modif">
+
+ 		<input type="hidden" name="id_vehicule" value="<?= $vehicule_actuel['id_vehicule'] ?? 0 ?>">
+
+
+ 		<!-- filte liste véhicule par agence -->
+ 		<div class="row">
  			<div class="form-group col-2">
  				<div class="input-group">
 
@@ -69,11 +75,6 @@
  				</div>
  			</div>
  		</div>
-
-
- 	<form class="formulaire" method="post" action="" enctype="multipart/form-data" id="ancre_modif">
-
- 		<input type="hidden" name="id_vehicule" value="<?= $vehicule_actuel['id_vehicule'] ?? 0 ?>">
 
  		<div class="row">
  			<div class="form-group col-6">

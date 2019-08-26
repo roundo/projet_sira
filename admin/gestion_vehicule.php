@@ -86,7 +86,7 @@ if( isset($_POST['id_vehicule']) ){
 									));
 	}
 
-	header("location:".RACINE_SITE."admin/gestion_vehicule.php");
+	header("location:".RACINE_SITE."admin/gestion_vehicule.php#ancre_filtre");
 	exit();
 }
 
