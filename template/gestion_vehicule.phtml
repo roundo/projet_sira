@@ -25,9 +25,7 @@
  				<td><?= $valeur['marque']; ?></td>
  				<td><?= $valeur['modele']; ?></td>
  				<td><?= $valeur['description']; ?></td>
- 				<td>
- 					<img class="img_tab" src="<?= RACINE_SITE.'/utilities/img/'. $valeur['photo']; ?>">
- 				</td>
+ 				<td><img class="w-50" src="<?= RACINE_SITE.'/utilities/img/'. $valeur['photo']; ?>"></td>
  				<td><?= $valeur['prix_journalier']; ?></td>
  				<td>
 					<a href="?action=modification&id=<?= $valeur['id_vehicule'] ?>#ancre_modif">
@@ -61,10 +59,10 @@
  				<div class="input-group">
 
  					<select class="form-control" name="id_agence" id="filtre">
- 						<option>-- choix Agence --</option>
-
+ 						<!-- <option>-- choix Agence --</option> -->
+ 				
  						<?php foreach( liste_agence() as $key => $value ): ?>
-
+ 							<?php $ag_actuel = $value['titre']; echo $ag_actuel; ?>
  							<option value="<?= $value['id_agence']; ?>"<?= isset($vehicule_actuel['id_agence']) && $vehicule_actuel['id_agence'] == $value['id_agence'] ? 'selected' : '' ?>
  							href="?action=filtre_agence&id_agence=<?= $value['id_agence'] ?>#ancre_filtre">
  								<?= $value['titre']; ?>
