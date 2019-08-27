@@ -33,7 +33,7 @@
 					<a href="?action=modification&id=<?= $valeur['id_vehicule'] ?>#ancre_modif">
 						<i class="fas fa-pen"></i>
 					</a> 
-					- 
+					-  
 					<a href="?action=suppression&id=<?= $valeur['id_vehicule'] ?>">
 						<i class="fas fa-trash-alt"></i>
 					</a> 
@@ -49,23 +49,12 @@
  	<!-- Fomulaire gestion véhicule -->
  	<h4 class="titre">Ajout/Modif d'un véhicule</h4>
 
- 	
 
-
- 	<form class="formulaire" method="post" action="" enctype="multipart/form-data" id="ancre_modif">
-
- 		<input type="hidden" name="id_vehicule" value="<?= $vehicule_actuel['id_vehicule'] ?? 0 ?>">
- 
-
- 		<!-- filtre liste véhicule par agence -->
- 		<div class="row">
  			<div class="form-group col-2">
  				<div class="input-group">
 
  					<select class="form-control" name="id_agence" id="filtre">
- 						<?php if( empty($id_agence_filtre ) ): ?>
- 							<option>-- choix Agence --</option>
- 						<?php endif; ?>
+
 
  						<?php foreach( liste_agence() as $key => $value ): ?>
 

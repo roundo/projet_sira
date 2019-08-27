@@ -78,7 +78,7 @@ if( isset($_POST['titre']) ){
 									));
 	}
 
-	header("location:".RACINE_SITE."admin/gestion_agence.php");
+	header("location:".RACINE_SITE."admin/gestion_agence.php#ancre_filtre");
 	exit();
 }
 
@@ -117,7 +117,7 @@ if( isset($_GET['action']) && $_GET['action'] == 'suppression' ){
 		}
 	}
 
-	header('location:'.RACINE_SITE.'admin/gestion_agence.php');
+	header('location:'.RACINE_SITE.'admin/gestion_agence.php#ancre_filtre');
 	exit();
 }
 
