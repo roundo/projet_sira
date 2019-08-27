@@ -23,7 +23,6 @@ main{margin-top: 5px;}
 
 .titre{background-color: rgba(0, 0, 0, .3); padding: .3%;}
 
-.accueil_vehicule{display: inline-block;margin: 0 10px;}
 .accueil_vehicule img{width: 10em; margin: 0 10px}
 .bonjour{color: red; text-transform: uppercase;}
 .bonjour strong{background-color: black;} 
@@ -33,6 +32,10 @@ a.disabled {
   cursor: default;
   background-color: grey !important;
 }
+
+/*#date_fin{
+	pointer-events: initial;
+  	cursor: default;}*/
 
 #prixx{
 	background-color: rgba(15, 100, 50, .4);

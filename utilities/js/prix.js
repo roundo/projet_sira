@@ -13,7 +13,11 @@ var date_fin   = document.getElementById('date_fin');
 
 date_debut.addEventListener('change', function(e){
 
-	date_fin.addEventListener('change', function(e){		
+	document.getElementById('date_fin').disabled = false;		
+
+	
+	date_fin.addEventListener('change', function(e){
+
 
 		var date_debut_parse  = Date.parse(date_debut.value);
 		var date_fin_parse 	  = Date.parse(date_fin.value);
@@ -23,13 +27,14 @@ date_debut.addEventListener('change', function(e){
 		prixElt.innerHTML = "<strong id='prixx'>"+nbJour+" jours pour "+nbJour*pttcElt+" € </strong>";
 	});
 });
-
-
+ 
 
 
 date_fin.addEventListener('focus', function(e) {
 
-    var dd = new Date();
+  	var dd = new Date(date_debut.value);
+  	dd.setDate( dd.getDate() + 15 );
 
     e.target.min = date_debut.value;
+    e.target.max = dd.toJSON().substring(0, 10); 
 });

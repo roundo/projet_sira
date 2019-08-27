@@ -51,7 +51,7 @@ if( isset($_POST['id_vehicule']) ){
 
 			if(in_array($extension_up, $extension)){
 				$dateEnrPhoto = Date("d_m_Y_h_i_s");
-				$nom_photo = $dateEnrPhoto.'_'. basename($_FILES['photo']['name']);
+				$nom_photo = basename($_FILES['photo']['name']);
 				$root = $_SERVER['DOCUMENT_ROOT'].RACINE_SITE.'utilities/img';
 				move_uploaded_file($_FILES['photo']['tmp_name'], $root.'/'.$nom_photo);
 			}
