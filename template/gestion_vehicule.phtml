@@ -61,7 +61,9 @@
  				<div class="input-group">
 
  					<select class="form-control" name="id_agence" id="filtre">
- 						<option>-- choix Agence --</option>
+ 						<option value="1"<?= isset($vehicule_actuel['id_agence']) && $vehicule_actuel['id_agence'] == $$vehicule_actuel['id_agence'] ? 'selected' : '' ?>">
+ 							-- choix Agence --
+ 						</option>
 
  						<?php foreach( liste_agence() as $key => $value ): ?>
 
