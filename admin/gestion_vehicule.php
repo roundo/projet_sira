@@ -25,7 +25,6 @@ if( isset($_GET['action']) && $_GET['action'] == 'filtre_agence' ){
 
 	$id_agence_filtre = $_GET['id_agence']; 
 
-	echo $id_agence_filtre;
 }
 
 $vehicule = $list_vehicule->fetchAll();	
