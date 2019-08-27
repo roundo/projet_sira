@@ -1,4 +1,7 @@
-
+*{
+    margin:0;
+    padding:0;
+}
 header{
 	background:url('../img/background1.jpg');
 	background-repeat: no-repeat;
