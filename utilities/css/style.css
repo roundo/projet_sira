@@ -33,10 +33,6 @@ a.disabled {
   background-color: grey !important;
 }
 
-/*#date_fin{
-	pointer-events: initial;
-  	cursor: default;}*/
-
 #prixx{
 	background-color: rgba(15, 100, 50, .4);
 	padding: 5px 32px;
