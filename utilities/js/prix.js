@@ -13,16 +13,14 @@ var date_fin   = document.getElementById('date_fin');
 
 date_debut.addEventListener('change', function(e){
 
-	document.getElementById('date_fin').disabled = false;		
-
+	date_fin.disabled = false;		
 	
 	date_fin.addEventListener('change', function(e){
 
+		/*var date_debut_parse  = Date.parse(date_debut.value);
+		var date_fin_parse 	  = Date.parse(date_fin.value);*/
 
-		var date_debut_parse  = Date.parse(date_debut.value);
-		var date_fin_parse 	  = Date.parse(date_fin.value);
-
-		var nbJour            = ( date_fin_parse-date_debut_parse ) / 86400000+1;
+		var nbJour        = ( Date.parse(date_fin.value)-Date.parse(date_debut.value) ) / 86400000+1;
 
 		prixElt.innerHTML = "<strong id='prixx'>"+nbJour+" jours pour "+nbJour*pttcElt+" € </strong>";
 	});
