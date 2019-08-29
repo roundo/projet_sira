@@ -1,33 +1,31 @@
 
-<div class="container mx-auto"> 
-
-  <form class="formulaire"><!--  float-right mb-5 -->
-    <div class="row">
-      <div class="form-group  col-2">
-
-        <select class="form-control text-center bg-light" id="filtre">
-          <option>-- filtre --</option>
-          <option href="?action=filtre&ordre=asc#ancre_modif">prix croissant</option>
-          <option href="?action=filtre&ordre=desc#ancre_modif">prix décroissant</option>
-        </select>
-
-      </div>
-    </div>
-  </form>
+<div class="container"> 
 
   <div class="row">
+    <div class="form-group  col-2">
+
+      <select class="form-control text-center bg-light" id="filtre">
+        <option>-- filtre --</option>
+        <option href="?action=filtre&ordre=asc#ancre_modif">prix croissant</option>
+        <option href="?action=filtre&ordre=desc#ancre_modif">prix décroissant</option>
+      </select>
+
+    </div>
+  </div>
+
+  <div class="row card-columns">
       <?php if ( $vehicules->rowCount() > 0 ) : ?>
        
          <?php while( $vehicule = $vehicules->fetch(PDO::FETCH_ASSOC) ): ?>
 
           	<?php   extract($vehicule); ?>	
 
-            <div class="accueil_vehicule card text-center col-2 m-3 p-1-5" id="ancre_modif">
+            <div class="accueil_vehicule card text-center col-3 pb-2" id="ancre_modif">
               
           		<?php if(!empty($photo)): ?>
 
                 <div>
-                  <img src="<?= RACINE_SITE . 'utilities/img/' . $photo ?>" alt="<?= $titre ?>" class="img-fluid">
+                  <img src="<?= RACINE_SITE . 'utilities/img/' . $photo ?>" alt="<?= $titre ?>">
                 </div>
 
                <?php endif; ?>  
@@ -36,9 +34,10 @@
               
                <?= $description ?>
               
-               <div><?= $prix_journalier ?> € / jour- <?= $titreagence ?></div>
+               <div><?= $prix_journalier ?> € / jour</div>
+               <div> <?= $titreagence ?></div>
                <br>
-               <a href="<?= RACINE_SITE .'reservation.php?reservation='.$id_vehicule ?>" class="btn btn-success mb-0<?= enLocation($id_vehicule) ? 'disabled' : '' ?>">
+               <a href="<?= RACINE_SITE .'reservation.php?reservation='.$id_vehicule ?>" class="btn btn-success <?= enLocation($id_vehicule) ? 'disabled' : '' ?>">
                   Réserver
                </a>
       		

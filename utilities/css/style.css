@@ -9,11 +9,7 @@ header{
     background-position-y: -95px;
     background-size:cover;
 }
-/*nav{
-	position: relative;
-    top: 100px;
-    margin-bottom: 2px;
-}*/
+
 
 h1, h2{
 	text-shadow: 2px 2px 2px black;
@@ -32,10 +28,6 @@ a.disabled {
   cursor: default;
   background-color: grey !important;
 }
-
-/*#date_fin{
-	pointer-events: initial;
-  	cursor: default;}*/
 
 #prixx{
 	background-color: rgba(15, 100, 50, .4);
