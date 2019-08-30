@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-2 mt-5"><?= $reservation['marque'].' - '.$reservation['modele']; ?>
 			<br>
-			Prix journalier <?= $reservation['prix_journalier']; ?></div>
+			Prix journalier <span id="prix"><?= $reservation['prix_journalier']; ?></span></div>
 			<div class="col-3"><img src="<?= RACINE_SITE.'utilities/img/'. $reservation['photo']; ?>"></div>
 		</div>
 
@@ -20,20 +20,20 @@
 				<div class="form-group col-3">
 					<label>Date de début</label>
 					<div class="input-group">
-						<input type="date" name="date_debut" min="<?= date("Y-m-d"); ?>" id="date_debut" class="form-control">
+						<input type="date" name="date_debut" id="date_debut" class="form-control" min="<?= date('Y-m-d') ;?>">
 					</div>
 				</div>
 				<div class="form-group col-3">
 					<label>Date de fin</label>
 					<div class="input-group">
-						<input type="date" name="date_fin" min=""  max="" id="date_fin" class="form-control" disabled="disabled">
+						<input type="date" name="date_fin" id="date_fin" class="form-control" disabled="disabled" min="" max="">
 					</div>
 				</div>
 				<!--  --> 
 			</div>
 			<div class="row">
-				<div class="col-6 text-center">
-					<strong id="prix"></strong>
+				<div class="col-3 prix_ttc">
+					
 				</div>
 			</div>
 			<p></p>
@@ -46,4 +46,4 @@
 		</form>
 	</div>
 
-	<script type="text/javascript" src="<?= RACINE_SITE.'utilities/js/prix.js' ?>"></script>
+	<script type="text/javascript" src="<?= RACINE_SITE . 'utilities/js/datePicker.js' ?>"></script>

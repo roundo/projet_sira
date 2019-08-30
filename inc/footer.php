@@ -9,6 +9,7 @@
 
 	<script type="text/javascript" src="<?= RACINE_SITE . 'utilities/js/flashBag.js' ?>"></script>
 
+	<script type="text/javascript" src="<?= RACINE_SITE .'utilities/js/redirect.js' ?>"></script>
 	
 </body>
 </html>
